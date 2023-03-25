@@ -1,0 +1,82 @@
+[
+{
+  "model": "products.product",
+  "pk": 1,
+  "fields": {
+    "title": "Iphone 14",
+    "category": "PHONE",
+    "description": "Iphone 14 128gb pink",
+    "image": "product_pic/apple-iphone-14-128-gb.png"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 2,
+  "fields": {
+    "title": "Iphone 13",
+    "category": "PHONE",
+    "description": "Iphone 13 256gb",
+    "image": "product_pic/apple-iphone-13-128gb-starlight_62667f2533c0e.jpg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 3,
+  "fields": {
+    "title": "TV Samsung LED UHD Smart",
+    "category": "TV",
+    "description": "TV Samsung LED UHD Smart в ваш дом",
+    "image": "product_pic/17000001299_1.jpg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 4,
+  "fields": {
+    "title": "75\" Crystal UHD 4K BU8500",
+    "category": "TV",
+    "description": "Разрешение 3840 x 2160\r\nБесплатная доставка\r\nSamsung Rewards от 1%\r\nДиагональ 191 см",
+    "image": "product_pic/zsd6g5sdg6serger.jpg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 5,
+  "fields": {
+    "title": "Ноутбук ASUS ROG Strix",
+    "category": "COMPUTER",
+    "description": "Ноутбук ASUS ROG Strix G15 G513RM-LN428 (90NR0845-M00SW0) 15.6\" WQHD 240Гц/ Ryzen 7 6800H/ 512 GB SSD/ 16 GB/ RTX3060 6GB/ Dos",
+    "image": "product_pic/xuueb557e1l0myde11h0l2jqyp6ns4np.jpg"
+  }
+},
+{
+  "model": "products.review",
+  "pk": 2,
+  "fields": {
+    "author": 1,
+    "product": 1,
+    "text": "Хороший телефон",
+    "rating": 5
+  }
+},
+{
+  "model": "products.review",
+  "pk": 3,
+  "fields": {
+    "author": 1,
+    "product": 5,
+    "text": "Хороший ноутбук. Но шумный",
+    "rating": 3
+  }
+},
+{
+  "model": "products.review",
+  "pk": 4,
+  "fields": {
+    "author": 1,
+    "product": 4,
+    "text": "Качественный телевизор",
+    "rating": 4
+  }
+}
+]
