@@ -1,10 +1,10 @@
 from accounts.forms import CustomUserCreationForm
 from accounts.forms import LoginForm
+from accounts.forms import PasswordChangeForm
 from accounts.forms import UserChangeForm
-from accounts.models import Account
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, get_user_model
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView
@@ -24,9 +24,9 @@ class LoginView(TemplateView):
         if not form.is_valid():
             messages.error(request, 'Некорректные данные')
             return redirect('index')
-        email = form.cleaned_data.get('email')
+        username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
-        user = authenticate(request, email=email, password=password)
+        user = authenticate(request, username=username, password=password)
         if not user:
             messages.error(request, 'Пользователь не найден')
             return redirect('login')
@@ -65,7 +65,7 @@ class ProfileView(DetailView):
     context_object_name = 'user_obj'
 
 
-class UserChangeView(UpdateView):
+class UserChangeView(LoginRequiredMixin, UpdateView):
     model = get_user_model()
     form_class = UserChangeForm
     template_name = 'user_change.html'
@@ -74,5 +74,18 @@ class UserChangeView(UpdateView):
     def get_success_url(self):
         return reverse('profile', kwargs={'pk': self.object.pk})
 
-    # def test_func(self):
-    #     return self.get_object().username == str(self.request.user)
+    def get_object(self, queryset=None):
+        return self.request.user
+
+
+class UserPasswordChangeView(LoginRequiredMixin, UpdateView):
+    model = get_user_model()
+    template_name = 'user_password_change.html'
+    form_class = PasswordChangeForm
+    context_object_name = 'user_obj'
+
+    def get_success_url(self):
+        return reverse('profile', kwargs={'pk': self.object.pk})
+
+    def get_object(self, queryset=None):
+        return self.request.user

@@ -10,6 +10,6 @@
         {% bootstrap_form form %}
 {% if not fields_only %}
         <br/>
-        <input type="submit" value="{{ button_text|default:'Submit' }}"/>
+        <input class="{{ button_class }}" type="submit" value="{{ button_text|default:'Submit' }}">
     </form>
 {% endif %}
