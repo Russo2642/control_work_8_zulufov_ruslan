@@ -1,22 +1,14 @@
 [
 {
   "model": "products.product",
-  "pk": 1,
-  "fields": {
-    "title": "Iphone 14",
-    "category": "PHONE",
-    "description": "Iphone 14 128gb pink",
-    "image": "product_pic/apple-iphone-14-128-gb.png"
-  }
-},
-{
-  "model": "products.product",
   "pk": 2,
   "fields": {
     "title": "Iphone 13",
     "category": "PHONE",
     "description": "Iphone 13 256gb",
-    "image": "product_pic/apple-iphone-13-128gb-starlight_62667f2533c0e.jpg"
+    "image": "product_pic/apple-iphone-13-128gb-starlight_62667f2533c0e.jpg",
+    "created_at": "2023-03-25T06:24:30.673Z",
+    "updated_at": "2023-03-25T06:24:30.682Z"
   }
 },
 {
@@ -26,7 +18,9 @@
     "title": "TV Samsung LED UHD Smart",
     "category": "TV",
     "description": "TV Samsung LED UHD Smart в ваш дом",
-    "image": "product_pic/17000001299_1.jpg"
+    "image": "product_pic/17000001299_1.jpg",
+    "created_at": "2023-03-25T06:24:30.673Z",
+    "updated_at": "2023-03-25T06:24:30.682Z"
   }
 },
 {
@@ -36,7 +30,9 @@
     "title": "75\" Crystal UHD 4K BU8500",
     "category": "TV",
     "description": "Разрешение 3840 x 2160\r\nБесплатная доставка\r\nSamsung Rewards от 1%\r\nДиагональ 191 см",
-    "image": "product_pic/zsd6g5sdg6serger.jpg"
+    "image": "product_pic/zsd6g5sdg6serger.jpg",
+    "created_at": "2023-03-25T06:24:30.673Z",
+    "updated_at": "2023-03-25T06:24:30.682Z"
   }
 },
 {
@@ -46,17 +42,21 @@
     "title": "Ноутбук ASUS ROG Strix",
     "category": "COMPUTER",
     "description": "Ноутбук ASUS ROG Strix G15 G513RM-LN428 (90NR0845-M00SW0) 15.6\" WQHD 240Гц/ Ryzen 7 6800H/ 512 GB SSD/ 16 GB/ RTX3060 6GB/ Dos",
-    "image": "product_pic/xuueb557e1l0myde11h0l2jqyp6ns4np.jpg"
+    "image": "product_pic/xuueb557e1l0myde11h0l2jqyp6ns4np.jpg",
+    "created_at": "2023-03-25T06:24:30.673Z",
+    "updated_at": "2023-03-25T06:24:30.682Z"
   }
 },
 {
-  "model": "products.review",
-  "pk": 2,
+  "model": "products.product",
+  "pk": 12,
   "fields": {
-    "author": 1,
-    "product": 1,
-    "text": "Хороший телефон",
-    "rating": 5
+    "title": "Iphone 14",
+    "category": "PHONE",
+    "description": "Iphone 13 256gb pink",
+    "image": "product_pic/apple-iphone-14-128-gb_h5pIcnj.png",
+    "created_at": "2023-03-25T09:57:32.815Z",
+    "updated_at": "2023-03-25T09:57:41.361Z"
   }
 },
 {
@@ -66,7 +66,9 @@
     "author": 1,
     "product": 5,
     "text": "Хороший ноутбук. Но шумный",
-    "rating": 3
+    "rating": 3,
+    "created_at": "2023-03-25T06:24:30.688Z",
+    "updated_at": "2023-03-25T06:24:30.694Z"
   }
 },
 {
@@ -76,7 +78,57 @@
     "author": 1,
     "product": 4,
     "text": "Качественный телевизор",
-    "rating": 4
+    "rating": 4,
+    "created_at": "2023-03-25T06:24:30.688Z",
+    "updated_at": "2023-03-25T06:24:30.694Z"
+  }
+},
+{
+  "model": "products.review",
+  "pk": 5,
+  "fields": {
+    "author": 2,
+    "product": 4,
+    "text": "Шикарный телевизор",
+    "rating": 5,
+    "created_at": "2023-03-25T08:06:34.157Z",
+    "updated_at": "2023-03-25T08:06:34.157Z"
+  }
+},
+{
+  "model": "products.review",
+  "pk": 9,
+  "fields": {
+    "author": 2,
+    "product": 12,
+    "text": "хороший телефон!",
+    "rating": 4,
+    "created_at": "2023-03-25T10:32:04.390Z",
+    "updated_at": "2023-03-25T10:32:04.390Z"
+  }
+},
+{
+  "model": "products.review",
+  "pk": 11,
+  "fields": {
+    "author": 9,
+    "product": 12,
+    "text": "Слишком большой, не удобный",
+    "rating": 3,
+    "created_at": "2023-03-25T11:51:25.383Z",
+    "updated_at": "2023-03-25T11:51:25.383Z"
+  }
+},
+{
+  "model": "products.review",
+  "pk": 12,
+  "fields": {
+    "author": 9,
+    "product": 2,
+    "text": "Супер телефон!",
+    "rating": 5,
+    "created_at": "2023-03-25T11:51:42.286Z",
+    "updated_at": "2023-03-25T11:51:42.286Z"
   }
 }
 ]
