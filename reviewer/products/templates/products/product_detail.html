@@ -27,5 +27,41 @@
             <p style="font-size:15px; font-style:italic; color:grey">добавлено {{ product.created_at }}</p>
         </div>
     </div>
+
+    {% load django_bootstrap5 %}
+    <form method="post" action="{% url 'review_create' product.pk %}">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input class="btn btn-outline-primary" type="submit" value="Опубликовать">
+    </form>
+    <div>
+        {% for review in product.reviews.all %}
+        <div class="row">
+            <h3>Пользователь - {{ review.author.username }}</h3>
+            <p style="font-size:15px">
+                Поставил оценку - {{ review.rating }}
+            </p>
+            <p style="font-size:15px">
+                Почта пользователя - {{ review.author.email }}
+            </p>
+            <p style="font-size:15px">
+                Текст оценки: <p>{{ review.text }}</p>
+            </p>
+            {% if user.is_authenticated %}
+                {% if request.user == review.author %}
+            <p>
+                <a href="{% url 'review_update' review.id %}" class="btn btn-outline-primary">Редактировать отзыв</a>
+                <form method="POST" action="{% url 'review_delete' review.id %}">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-outline-danger" value="Удалить отзыв">
+                </form>
+            </p>
+                {% endif %}
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+
 </div>
 {% endblock %}

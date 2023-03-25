@@ -1,9 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic.edit import FormMixin
 
 from products.forms import ProductForm
 from products.models import Product
+
+from products.forms import ReviewForm
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
@@ -15,9 +19,10 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
         return reverse('product_detail', kwargs={'pk': self.object.pk})
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(FormMixin, DetailView):
     template_name = 'products/product_detail.html'
     model = Product
+    form_class = ReviewForm
 
 
 class ProductUpdateView(UpdateView):
