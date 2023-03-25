@@ -48,7 +48,8 @@
     <div>
         {% for review in product.reviews.all %}
         <div class="row">
-            <h3>Пользователь - {{ review.author.username }} <span style="font-size:10px; font-style:italic; color:grey">создан {{ review.created_at }}</span></h3>
+            <a href="{% url 'profile' review.author_id %}"><h3>Пользователь - {{ review.author.username }}</a>
+            <span style="font-size:13px; font-style:italic; color:grey">создан {{ review.created_at }}</span></h3>
             <p style="font-size:15px">
                 Поставил оценку - {{ review.rating }}
             </p>
