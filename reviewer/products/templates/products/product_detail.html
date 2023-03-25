@@ -28,7 +28,13 @@
             <h3>{{ product.title }}</h3>
             <h4>Категория: {{ product.get_category_display }}</h4>
             <p>Описание: {{ product.description }}</p>
-            <p>Средний рейтинг: </p>
+
+            <p>Средний рейтинг:
+                {% if product.get_avg_rating.rating__avg %}
+                    {{ product.get_avg_rating.rating__avg }}</p>
+                {% else %}
+                    0
+                {% endif %}
             <p style="font-size:15px; font-style:italic; color:grey">добавлено {{ product.created_at }}</p>
         </div>
     </div>
@@ -37,7 +43,7 @@
     <form method="post" action="{% url 'review_create' product.pk %}">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <input class="btn btn-outline-primary" type="submit" value="Опубликовать">
+        <input class="btn btn-outline-primary" type="submit" value="Опубликовать отзыв">
     </form>
     <div>
         {% for review in product.reviews.all %}
@@ -53,18 +59,25 @@
                 Текст оценки: <p>{{ review.text }}</p>
             </p>
             {% if user.is_authenticated %}
-                {% if request.user == review.author %}
+                {% if request.user == review.author or perms.reviews.change_review %}
             <p>
                 <a href="{% url 'review_update' review.id %}" class="btn btn-outline-primary">Редактировать отзыв</a>
+                {% endif %}
+
+                {% if request.user == review.author or perms.reviews.delete_review %}
                 <form method="POST" action="{% url 'review_delete' review.id %}">
                     {% csrf_token %}
                     <input type="submit" class="btn btn-outline-danger" value="Удалить отзыв">
                 </form>
-            </p>
                 {% endif %}
+            </p>
             {% endif %}
         </div>
         {% endfor %}
+
+        {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+        {% endif %}
     </div>
 
 

@@ -17,5 +17,8 @@
     <p>Имя: {{ user_obj.get_full_name }}</p>
     <p>Email: {{ user_obj.email }}</p>
 
+    <h2 class="text-center clear">Отзывы:</h2>
+    {% include 'partial/review_list.html' %}
+
 
 {% endblock %}

@@ -1,13 +1,10 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.shortcuts import redirect, render
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.views.generic.edit import FormMixin
-
 from products.forms import ProductForm
-from products.models import Product
-
 from products.forms import ReviewForm
+from products.models import Product
 
 
 class ProductCreateView(UserPassesTestMixin, CreateView):

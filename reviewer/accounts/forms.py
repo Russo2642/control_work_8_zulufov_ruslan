@@ -57,9 +57,8 @@ class CustomUserCreationForm(forms.ModelForm):
 class UserChangeForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
-        fields = ('username', 'first_name', 'last_name', 'email')
+        fields = ('first_name', 'last_name', 'email')
         labels = {
-            'username': 'Логин',
             'first_name': 'Имя',
             'last_name': 'Фамилия',
             'email': 'Email'

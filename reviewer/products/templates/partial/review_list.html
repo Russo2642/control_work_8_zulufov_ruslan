@@ -1,0 +1,10 @@
+{% for review in user_obj.reviews.all %}
+    <div class="row">
+        <h3><a href="{% url 'product_detail' review.product_id %}">Отзыв на - {{ review.product }}</a></h3>
+        <p>Отзыв: {{ review.text }}</p>
+        <p>Оценка: {{ review.rating }}</p>
+        <p>Добавлено: {{ review.created_at }}</p>
+    </div>
+{% empty %}
+    <h2 class="text-center">Комментариев нет</h2>
+{% endfor %}

@@ -1,4 +1,7 @@
 from django.db import models
+from django.db.models import Avg
+
+
 
 
 class CategoryChoice(models.TextChoices):
@@ -47,6 +50,9 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
+
+    def get_avg_rating(self):
+        return self.reviews.aggregate(Avg('rating'))
 
     def __str__(self):
         return self.title

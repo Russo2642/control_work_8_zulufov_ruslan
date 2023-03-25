@@ -21,7 +21,7 @@ class ReviewForm(forms.ModelForm):
     rating = forms.IntegerField(
         min_value=1,
         max_value=5,
-        required=True
+        required=True,
     )
 
     class Meta:

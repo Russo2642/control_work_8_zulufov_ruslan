@@ -24,6 +24,13 @@
                 </div>
                 <h4>{{ product.title }}</h4>
                 <h4>Категория: {{ product.get_category_display }}</h4>
+                <h4>Средний рейтинг:
+                    {% if product.get_avg_rating.rating__avg %}
+                        {{ product.get_avg_rating.rating__avg }}</p>
+                    {% else %}
+                        0
+                    {% endif %}
+                </h4>
                 <p>
                     <a href="{% url 'product_detail' product.pk %}" class="btn btn-primary read_more">Подробнее...</a>
                 </p>

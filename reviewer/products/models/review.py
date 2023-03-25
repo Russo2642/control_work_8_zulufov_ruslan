@@ -29,7 +29,8 @@ class Review(models.Model):
     rating = models.IntegerField(
         null=False,
         blank=False,
-        verbose_name='Оценка'
+        verbose_name='Оценка',
+        default=0
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
@@ -44,9 +45,6 @@ class Review(models.Model):
         verbose_name = 'Оценка'
         verbose_name_plural = 'Оценки'
         ordering = ('-created_at', )
-
-    def avg_rating(self):
-        return self.product.aggregate(Avg('rating'))
 
     def __str__(self):
         return f"{self.author} - {self.product}"
