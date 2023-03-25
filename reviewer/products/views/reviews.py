@@ -23,10 +23,10 @@ class ReviewCreateView(LoginRequiredMixin, View):
 
 
 class ReviewUpdateView(UpdateView):
-    template_name = 'products/product_detail.html'
+    template_name = 'review/review_update.html'
     model = Review
-    #form_class = ReviewForm
-    fields = ['text', 'rating']
+    form_class = ReviewForm
+    #fields = ['text', 'rating']
 
     def get_success_url(self):
         return reverse('product_detail', kwargs={'pk': self.object.product_id})

@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models import Avg
 
 
 class Review(models.Model):
@@ -43,6 +44,9 @@ class Review(models.Model):
         verbose_name = 'Оценка'
         verbose_name_plural = 'Оценки'
         ordering = ('-created_at', )
+
+    def avg_rating(self):
+        return self.product.aggregate(Avg('rating'))
 
     def __str__(self):
         return f"{self.author} - {self.product}"
