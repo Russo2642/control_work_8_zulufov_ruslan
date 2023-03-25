@@ -9,11 +9,6 @@ class Account(AbstractUser):
         blank=False,
         null=False
     )
-    commented_products = models.ManyToManyField(
-        verbose_name='Отзыв на товары',
-        to='products.Product',
-        related_name='user_comments'
-    )
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []

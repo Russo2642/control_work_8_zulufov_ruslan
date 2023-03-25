@@ -8,8 +8,6 @@ from products.forms import ReviewForm
 
 from products.models import Review
 
-from products.models import Product
-
 
 class ReviewCreateView(LoginRequiredMixin, View):
     def post(self, request, pk):
@@ -22,17 +20,16 @@ class ReviewCreateView(LoginRequiredMixin, View):
         return redirect(request.META.get('HTTP_REFERER'))
 
 
-class ReviewUpdateView(UpdateView):
+class ReviewUpdateView(UserPassesTestMixin, UpdateView):
     template_name = 'review/review_update.html'
     model = Review
     form_class = ReviewForm
-    #fields = ['text', 'rating']
 
     def get_success_url(self):
         return reverse('product_detail', kwargs={'pk': self.object.product_id})
 
-    # def test_func(self):
-    #     return self.request.user == self.object.author
+    def test_func(self):
+        return self.request.user == self.get_object().author or self.request.user.has_perm('review.change_review')
 
 
 class ReviewDeleteView(UserPassesTestMixin, DeleteView):
@@ -42,4 +39,4 @@ class ReviewDeleteView(UserPassesTestMixin, DeleteView):
         return reverse('product_detail', kwargs={'pk': self.object.product_id})
 
     def test_func(self):
-        return self.request.user == self.get_object().author
+        return self.request.user == self.get_object().author or self.request.user.has_perm('review.delete_review')
