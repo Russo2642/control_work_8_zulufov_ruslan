@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="details">
+        <div class="details-img">
+            <img src="{{ product.image.url }}" alt="">
+        </div>
+        <div class="details-content">
+            <h3>{{ product.title }}</h3>
+            <h4>Категория: {{ product.get_category_display }}</h4>
+            <p>Описание: {{ product.description }}</p>
+            <p style="font-size:15px; font-style:italic; color:grey">добавлено {{ product.created_at }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

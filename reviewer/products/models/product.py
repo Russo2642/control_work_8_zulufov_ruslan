@@ -35,6 +35,14 @@ class Product(models.Model):
         upload_to='product_pic',
         verbose_name='Картинка'
     )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Дата и время создания"
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name="Дата и время обновления"
+    )
 
     class Meta:
         verbose_name = 'Продукт'
